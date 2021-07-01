@@ -13,10 +13,10 @@ namespace WebSide.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database : DbContext
+    public partial class bdSistema : DbContext
     {
-        public Database()
-            : base("name=Database")
+        public bdSistema()
+            : base("name=bdSistema")
         {
         }
     
@@ -25,9 +25,12 @@ namespace WebSide.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Clientes> Clientes { get; set; }
-        public virtual DbSet<rolUsuarios> rolUsuarios { get; set; }
+        public virtual DbSet<modulo> modulo { get; set; }
+        public virtual DbSet<operacion> operacion { get; set; }
+        public virtual DbSet<rol> rol { get; set; }
+        public virtual DbSet<rol_operacion> rol_operacion { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<Cliente> ClienteSet { get; set; }
     }
 }

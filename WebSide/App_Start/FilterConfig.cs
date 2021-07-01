@@ -9,7 +9,7 @@ namespace WebSide
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new Filters.VerificaSesion());
-            filters.Add(new Filters.AuthorizeUser());
+            ///filters.Add(new Filters.AuthorizeUser());
         }
     }
 }

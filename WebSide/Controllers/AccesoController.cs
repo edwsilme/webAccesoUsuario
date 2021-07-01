@@ -20,10 +20,10 @@ namespace WebSide.Controllers
             try
             {
 
-                using (Models.Database db = new Models.Database()) {
+                using (Models.bdSistema db = new Models.bdSistema()) {
 
-                    var oUser = (from d in db.Usuarios
-                                 where d.usuario == User.Trim() && d.pass == Pass.Trim()
+                    var oUser = (from d in db.usuario
+                                 where d.email == User.Trim() && d.password == Pass.Trim()
                                  select d).FirstOrDefault();
 
                     if (oUser == null)
@@ -35,7 +35,7 @@ namespace WebSide.Controllers
                     Session["User"] = oUser;
                 }
 
-                return RedirectToAction("Index", "Home");   
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {

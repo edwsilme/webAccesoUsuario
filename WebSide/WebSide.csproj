@@ -129,39 +129,50 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
+    <Compile Include="Controllers\CloseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="Filters\AuthorizeUser.cs" />
     <Compile Include="Filters\VerificaSesion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Clientes.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+    <Compile Include="Models\Cliente.cs">
+      <DependentUpon>Database_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database.Context.cs">
+    <Compile Include="Models\Database_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database.Context.tt</DependentUpon>
+      <DependentUpon>Database_Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database.cs">
+    <Compile Include="Models\Database_Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>Database_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database.Designer.cs">
+    <Compile Include="Models\Database_Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database.edmx</DependentUpon>
+      <DependentUpon>Database_Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\rolUsuarios.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+    <Compile Include="Models\modulo.cs">
+      <DependentUpon>Database_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\operacion.cs">
+      <DependentUpon>Database_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rol.cs">
+      <DependentUpon>Database_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rol_operacion.cs">
+      <DependentUpon>Database_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+      <DependentUpon>Database_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Usuarios.cs">
-      <DependentUpon>Database.tt</DependentUpon>
+    <Compile Include="Models\usuario.cs">
+      <DependentUpon>Database_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -174,24 +185,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Database.Context.tt">
+    <Content Include="Models\Database_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database.edmx</DependentUpon>
-      <LastGenOutput>Database.Context.cs</LastGenOutput>
+      <DependentUpon>Database_Model.edmx</DependentUpon>
+      <LastGenOutput>Database_Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Database.tt">
+    <Content Include="Models\Database_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database.edmx</DependentUpon>
-      <LastGenOutput>Database.cs</LastGenOutput>
+      <DependentUpon>Database_Model.edmx</DependentUpon>
+      <LastGenOutput>Database_Model.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Database.edmx">
+    <EntityDeploy Include="Models\Database_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Database.Designer.cs</LastGenOutput>
+      <LastGenOutput>Database_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Database.edmx.diagram">
-      <DependentUpon>Database.edmx</DependentUpon>
+    <Content Include="Models\Database_Model.edmx.diagram">
+      <DependentUpon>Database_Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -221,9 +232,17 @@
     <Content Include="Views\Acceso\Login.cshtml" />
     <Content Include="Views\Shared\_layoutAcces.cshtml" />
     <Content Include="Views\Error\UnauthorizedOperation.cshtml" />
+    <Content Include="Views\Home\Client.cshtml" />
+    <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\usuarios\Create.cshtml" />
+    <Content Include="Views\usuarios\Delete.cshtml" />
+    <Content Include="Views\usuarios\Details.cshtml" />
+    <Content Include="Views\usuarios\Edit.cshtml" />
+    <Content Include="Views\usuarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Close\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

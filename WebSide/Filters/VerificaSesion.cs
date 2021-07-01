@@ -11,7 +11,7 @@ namespace WebSide.Filters
 {
     public class VerificaSesion : ActionFilterAttribute
     {
-        private Usuarios oUsuario;
+        private usuario oUsuario;
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -19,8 +19,8 @@ namespace WebSide.Filters
             {
                 base.OnActionExecuting(filterContext);
 
-                oUsuario = (Usuarios)HttpContext.Current.Session["User"];
-
+                oUsuario = (usuario)HttpContext.Current.Session["User"];
+                
                 if (oUsuario == null)
                 {
                     if (filterContext.Controller is AccesoController == false)

@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'D:\Programacion\VS-2017\WebSide\WebSide\Models\Database.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'D:\Programacion\Github\webAccesoUsuario\WebSide\Models\Database_Model.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

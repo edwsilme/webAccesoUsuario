@@ -10,13 +10,13 @@ namespace WebSide.Filters
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class AuthorizeUser : AuthorizeAttribute
     {
-        private Usuarios oUsuario;
-        private Database db = new Database();
-        private int idrolUsuario;
+        private usuario oUsuario;
+        private bdSistema db = new bdSistema();
+        private int idOperacion;
 
-        public AuthorizeUser(int idrolUsuario = 0)
+        public AuthorizeUser(int idOperacion = 0)
         {
-            this.idrolUsuario = idrolUsuario;
+            this.idOperacion = idOperacion;
         }
 
 
@@ -24,17 +24,21 @@ namespace WebSide.Filters
         {
             String nombreOperacion = "";
             String nombreModulo = "";
+
             try
             {
-                oUsuario = (Usuarios)HttpContext.Current.Session["User"];
-                var lstMisOperaciones = from m in db.rolUsuarios
-                                        where m.idrolUsuario == oUsuario.rolUsuario
-                                            && m.idrolUsuario == idrolUsuario
+                oUsuario = (usuario)HttpContext.Current.Session["User"];
+                var lstMisOperaciones = from m in db.rol_operacion
+                                        where m.idRol == oUsuario.idRol
+                                            && m.idOperacion == idOperacion
                                         select m;
-
                 
-                if (lstMisOperaciones.ToList().Count() == 0)
+                if (lstMisOperaciones.ToList().Count() == 1)
                 {
+                    var oOperacion = db.operacion.Find(idOperacion);
+                    int? idModulo = oOperacion.idModulo;
+                    nombreOperacion = getNombreDeOperacion(idOperacion);
+                    nombreModulo = getNombreDelModulo(idModulo);
                     filterContext.Result = new RedirectResult("~/Error/UnauthorizedOperation?operacion=" + nombreOperacion + "&modulo=" + nombreModulo + "&msjeErrorExcepcion=");
                 }
             }
@@ -43,5 +47,41 @@ namespace WebSide.Filters
                 filterContext.Result = new RedirectResult("~/Error/UnauthorizedOperation?operacion=" + nombreOperacion + "&modulo=" + nombreModulo + "&msjeErrorExcepcion=" + ex.Message);
             }
         }
+
+        public string getNombreDeOperacion(int idOperacion)
+        {
+            var ope = from op in db.operacion
+                      where op.id == idOperacion
+                      select op.nombre;
+            String nombreOperacion;
+            try
+            {
+                nombreOperacion = ope.First();
+            }
+            catch (Exception)
+            {
+                nombreOperacion = "";
+            }
+            return nombreOperacion;
+        }
+
+        public string getNombreDelModulo(int? idModulo)
+        {
+            var modulo = from m in db.modulo
+                         where m.id == idModulo
+                         select m.nombre;
+            String nombreModulo;
+            try
+            {
+                nombreModulo = modulo.First();
+            }
+            catch (Exception)
+            {
+                nombreModulo = "";
+            }
+            return nombreModulo;
+
+        }
+
     }
 }

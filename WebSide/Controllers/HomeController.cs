@@ -10,26 +10,39 @@ namespace WebSide.Controllers
     public class HomeController : Controller
     {
 
-        [AuthorizeUser(idrolUsuario: 1)]
+
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult Index()
         {
             return View();
         }
 
-        [AuthorizeUser(idrolUsuario: 2)]
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        [AuthorizeUser(idrolUsuario: 3)]
+        [AuthorizeUser(idOperacion: 2)]
+        public ActionResult Users()
+        {
+            return View();
+        }
+
+        [AuthorizeUser(idOperacion: 1)]
+        public ActionResult Client()
+        {
+            return View();
+        }
+
+
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+
     }
+
 }

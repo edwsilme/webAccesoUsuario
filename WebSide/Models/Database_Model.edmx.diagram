@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8578f840f0ea4ba5b2a9191a43101f0f" Name="Diagram1">
+        <EntityTypeShape EntityType="bdAdministraSistemaModel.modulo" Width="1.5" PointX="3.875" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdAdministraSistemaModel.operacion" Width="1.5" PointX="7" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdAdministraSistemaModel.rol" Width="1.5" PointX="1.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdAdministraSistemaModel.rol_operacion" Width="1.5" PointX="3.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdAdministraSistemaModel.sysdiagrams" Width="1.5" PointX="5.875" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdAdministraSistemaModel.usuario" Width="1.5" PointX="1.5" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="bdAdministraSistemaModel.FK_operacion_modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="bdAdministraSistemaModel.FK_rol_operacion_operacion" ManuallyRouted="false" />
+        <AssociationConnector Association="bdAdministraSistemaModel.FK_rol_operacion_rol" ManuallyRouted="false" />
+        <AssociationConnector Association="bdAdministraSistemaModel.FK_usuario_rol" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="bdAdministraSistemaModel.Cliente" Width="1.5" PointX="9.25" PointY="2.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

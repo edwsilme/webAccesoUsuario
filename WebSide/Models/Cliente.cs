@@ -12,16 +12,11 @@ namespace WebSide.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuarios
+    public partial class Cliente
     {
-        public int idUsuario { get; set; }
-        public string usuario { get; set; }
-        public string pass { get; set; }
-        public string nombreUsuario { get; set; }
-        public string apellidoUsuario { get; set; }
-        public int docuUsuario { get; set; }
-        public int rolUsuario { get; set; }
-    
-        public virtual rolUsuarios rolUsuarios { get; set; }
+        public int Id { get; set; }
+        public string nombreCliente { get; set; }
+        public string docuCLiente { get; set; }
+        public string EstadoCliente { get; set; }
     }
 }
