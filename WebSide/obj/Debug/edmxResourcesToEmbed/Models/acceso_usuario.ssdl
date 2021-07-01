@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreCLiente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apelidoCliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="estadoCLiente" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'UsuariosWebBD.dbo.rolUsuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="rolUsuarios">
+    <Key>
+      <PropertyRef Name="idRolUsuario" />
+      <PropertyRef Name="rolUsuario" />
+    </Key>
+    <Property Name="idRolUsuario" Type="int" Nullable="false" />
+    <Property Name="rolUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="passUsuario" Type="int" Nullable="false" />
+    <Property Name="rolUsuario" Type="int" Nullable="false" />
+    <Property Name="nombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellidoUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="docuUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_rolUsuarios_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="rolUsuarios" Type="Self.rolUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="rolUsuarios">
+        <PropertyRef Name="idRolUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelsStoreContainer">
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rolUsuarios" EntityType="Self.rolUsuarios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [rolUsuarios].[idRolUsuario] AS [idRolUsuario], 
+    [rolUsuarios].[rolUsuario] AS [rolUsuario]
+    FROM [dbo].[rolUsuarios] AS [rolUsuarios]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_rolUsuarios_Usuario" Association="Self.FK_rolUsuarios_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="rolUsuarios" EntitySet="rolUsuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
